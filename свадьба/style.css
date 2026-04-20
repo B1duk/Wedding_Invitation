@@ -1,0 +1,771 @@
+/* ===== Сброс и базовые настройки ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #555E4B;
+  --color-primary-light: rgba(85, 94, 75, 0.60);
+  --color-accent: #AEB691;
+  --color-bg-light: #F3EBE3;
+  --color-bg-cream: #EBDDD0;
+  --color-secondary: #FEF7F8;
+  --color-text-dark: #1a1a1a;
+  --color-text-light: #EBDDD0;
+  --font-serif: 'Playfair Display SC', 'Playfair Display', serif;
+  --font-script: 'Marck Script', cursive;
+  --font-body: 'Cormorant Infant', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --spacing-unit: 1rem;
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background: #e0e0e0; 
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== Главный контейнер ===== */
+.invitation {
+  width: 100%;
+  max-width: 375px;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* ===== Утилиты ===== */
+.text-center { text-align: center; }
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* ===== Hero секция ===== */
+.hero {
+  padding: 40px 20px 30px;
+  text-align: center;
+  background: #fff;
+}
+
+.hero-date {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #4A5A2E;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.hero-title-block {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.hero-names {
+  font-family: "Cormorant Infant", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.hero-name {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 900;
+  font-size: 3.2rem;
+  color: #5A6B4A;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.hero-ampersand {
+  font-size: 3.6rem;
+  color: #5A6B4A;
+  line-height: 1;
+  margin-top: -8px;
+}
+
+.hero-subtitle {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  font-family: "Marck Script", cursive;
+  font-size: 1.35rem;
+  color: #9AAF85;
+  font-style: italic;
+  margin: 0;
+  line-height: 1;
+  transform: translateY(45%);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.hero-photo {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 25px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.scroll-hint {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 10px auto 0;
+}
+
+.scroll-hint .arrow {
+  width: 14px;
+  height: 8px;
+  background: var(--color-accent);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+@media(max-width: 375px) {
+  .hero-name { font-size: 2.5rem; }
+  .hero-ampersand { font-size: 2.9rem; }
+  .hero-subtitle { font-size: 1.15rem; transform: translateY(40%); right: 2px; }
+}
+
+/* ===== Общие стили секций ===== */
+section {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+section h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+/* ===== Конверт ===== */
+.envelope-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem auto;
+}
+
+.envelope-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ✅ Текст СМЕЩЁН НИЖЕ середины */
+.overlay-card {
+  position: absolute;
+  bottom: 15%; /* Было 50% → теперь 15% от низа = чуть ниже центра */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 62%;
+  font-size: 0.8rem;
+  background: rgba(235, 221, 208, 0.95);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.overlay-card p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.message-card-text{
+    
+}
+
+@media (max-width: 340px) {
+  .envelope-wrapper { max-width: 270px; }
+  .overlay-card { font-size: 0.75rem; padding: 0.85rem; }
+}
+
+/* ===== Greeting ===== */
+.greeting h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: #565D4B;
+}
+
+.message-card {
+  background-color: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  max-width: 230px;
+  width: 90%;
+  box-shadow: none;
+}
+
+/* ===== Calendar ===== */
+.calendar-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar {
+  background: var(--color-bg-light);
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 295px;
+}
+
+.calendar-section h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 600;
+}
+
+.calendar-header {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.weekday {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.day {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+}
+
+.day.highlighted {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23555E4B' d='M50 88.5l-3.5-3.2C23.8 64.5 10 51.8 10 35.5 10 23.2 19.8 13.5 32.2 13.5c7 0 13.8 3.3 17.8 8.4 4-5.1 10.8-8.4 17.8-8.4C80.2 13.5 90 23.2 90 35.5c0 16.3-13.8 29-36.5 49.8L50 88.5z'/%3E%3C/svg%3E");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--color-text-light);
+  font-weight: 300;
+  border-radius: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.wedding-date {
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-top: 1rem;
+}
+
+/* ===== Story ===== */
+.story {
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), /* Белый полупрозрачный слой */
+    url('./images/photo 3.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #565D4B;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-text {
+    background: rgba(14, 13, 13, 0.5);
+    border-radius: var(--border-radius);
+    color: var(--color-bg-cream);
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.story-content {
+  background: rgba(14, 13, 13, 0.5);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-bg-cream)
+}
+
+/* ===== Location ===== */
+.location h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.map-placeholder {
+  width: 290px;
+  height: 290px;
+  background: var(--color-bg-light);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.map-icon {
+  width: 80px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.map-placeholder address {
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+/* ===== Timeline ===== */
+.timing-elegant {
+  padding: 3rem 1.5rem;
+  background: linear-gradient(180deg, #fff 0%, #faf8f5 100%);
+  text-align: center;
+}
+
+.timing-header { margin-bottom: 2.5rem; }
+
+.timing-date {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: #41501D;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.timing-invitation {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: #5a5a5a;
+  line-height: 1.7;
+  max-width: 300px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+.timing-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.timing-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(85, 94, 75, 0.08);
+  width: 100%;
+}
+
+.timing-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.timing-time .date {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-primary-light);
+  letter-spacing: 1px;
+}
+
+.timing-time .clock {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.timing-event {
+  text-align: center;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--color-primary-light);
+  width: 100%;
+}
+
+.event-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--color-text-dark);
+  line-height: 1.5;
+  display: block;
+}
+
+.event-text.celebration {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 375px) {
+  .timing-elegant { padding: 2.5rem 1rem; }
+  .timing-date { font-size: 1.5rem; }
+  .timing-invitation { font-size: 0.95rem; }
+  .timing-time .clock { font-size: 1.35rem; }
+  .event-text { font-size: 1rem; }
+  .event-text.celebration { font-size: 1.1rem; }
+}
+
+/* ===== Dresscode ===== */
+.dresscode h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.dresscode-text {
+  text-align: center;
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+.palette {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.color-swatch {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.color-swatch:not(:first-child) { margin-left: -40px; }
+
+.dresscode-note {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.dresscode-image {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.dresscode-image img {
+  max-width: 100%;
+  width: 320px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media(max-width: 480px) {
+  .timing-elegant { padding: 40px 20px; }
+  .timing-date { font-size: 1.5rem; }
+  .timing-invitation { font-size: 1rem; }
+  .timing-row { gap: 10px; }
+  .timing-time .clock { font-size: 1rem; }
+  .event-text.celebration { font-size: 1rem; }
+}
+
+/* ===== Countdown ===== */
+.countdown-section {
+  text-align: center;
+  background: linear-gradient(135deg, #f9f9f9, #fff);
+}
+
+.countdown-section h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 55px;
+}
+
+.countdown-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px; height: 55px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-label {
+  font-size: 1.125rem;
+  color: var(--color-primary);
+}
+
+.countdown-separator {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  align-self: center;
+  margin: 0 0.25rem;
+}
+
+/* ===== Wishes (КАРУСЕЛЬ) ===== */
+.wishes {
+  background: rgba(235, 221, 208, 0.6);
+}
+
+.wishes-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dot-icon {
+  width: 6px; height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+/* Контейнер карусели */
+.wishes-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  padding: 0;
+}
+
+.wishes-content {
+  background: #565656;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wishes-content p { margin: 0; }
+
+/* Точки навигации */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+.wishes-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.nav-dot {
+  font-size: 1rem;
+  color: var(--color-primary-light);
+  cursor: pointer;
+}
+
+.nav-dot.active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ===== RSVP ===== */
+.rsvp h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.rsvp p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.rsvp-date {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0.5rem 0;
+}
+
+/* ===== Telegram ===== */
+.telegram h2 {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.telegram p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ===== Кнопки ===== */
+.btn-primary {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.75rem 2.5rem;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.8);
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--color-primary);
+  color: var(--color-bg-cream);
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.footer-greeting {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.footer-signature {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-names {
+  font-family: "Cormorant Infant", serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+/* ===== Медиа-запросы ===== */
+@media (min-width: 480px) { .invitation {} }
+@media (min-width: 768px) { section { padding: 3rem 2rem; } }
+@media (max-width: 600px) {
+  .timing-title { font-size: 1.8rem; }
+  .event, .time { font-size: 0.95rem; }
+  .timing-item { padding: 15px 0; }
+}
